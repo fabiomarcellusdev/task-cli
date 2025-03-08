@@ -2,18 +2,10 @@
 
 import { isHelpCommandType, showHelp, ensureTasksFileExists } from "../lib/helpers";
 
-// Ensure tasks file exists
-ensureTasksFileExists()
+ensureTasksFileExists();
 
-// Extract arguments passed into CLI script
-// If passing in cmd `task-cli add "Buy groceries"` then process.argv returns [
-//   "node program file path here",
-//   "path to the script being executed here",
-//   "add",
-//   "Buy groceries"
-// ]
-const args = process.argv.slice(2); // Slice at index 2 so array returned will only contain the arguments passed to the script
-const command = args[0]; //Ex: For command `task-cli add "Buy groceries"` command will be `add`
+const args = process.argv.slice(2); 
+const command = args[0];
 
 switch(command) {
     case "add":
@@ -43,5 +35,5 @@ switch(command) {
         }
         break;
     default:
-        console.log("Invalid command. Please use one of the following commands: add, update, delete, mark-in-progress, mark-done, list");
+        console.log("Invalid command. Please use one of the following commands: help, add, update, delete, mark-in-progress, mark-done, list");
 }
