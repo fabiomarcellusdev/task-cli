@@ -14,7 +14,7 @@ const addNewTask = (description: string): void => {
 
     const tasks = loadTasks();
 
-    const newDate = new Date();
+    const newDate = new Date().toISOString();
     const newTask: Task = {
         id: generateTaskId(),
         description,
