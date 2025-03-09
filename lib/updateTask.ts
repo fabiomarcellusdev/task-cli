@@ -1,6 +1,7 @@
+import { Task } from "../types/task";
 import { loadTasks, saveTasks } from "./helpers";
 
-const updateTask = (taskId: string, newDescription: string) => {
+const updateTask = (taskId: Task['id'], newDescription: Task['description']) => {
     if (!taskId || !newDescription) {
         console.log("Error: Task ID and new description are required.");
         return;

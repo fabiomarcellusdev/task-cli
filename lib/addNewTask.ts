@@ -6,7 +6,7 @@ import { Task } from "../types/task";
  * @param description Task description
  * @returns 
  */
-const addNewTask = (description: string): void => {
+const addNewTask = (description: Task['description']): void => {
     if(!description) {
         console.log("Error: Task description is required.");
         return;

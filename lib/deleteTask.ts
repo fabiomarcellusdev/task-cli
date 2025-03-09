@@ -1,6 +1,7 @@
+import { Task } from "../types/task";
 import { loadTasks, saveTasks } from "./helpers";
 
-const deleteTask = (taskId: string) => {
+const deleteTask = (taskId: Task['id']) => {
     if(!taskId) {
         console.log("Error: Task ID is required.");
         return;

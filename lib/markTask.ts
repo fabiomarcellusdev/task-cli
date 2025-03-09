@@ -1,7 +1,7 @@
 import { Task } from "../types/task";
 import { loadTasks, saveTasks } from "./helpers";
 
-const markTask = (taskId: string, status: Task['status']): void => {
+const markTask = (taskId: Task['id'], status: Task['status']): void => {
     if(!taskId || !status) {
         console.log("Error: Task ID and status are required.");
         return;
