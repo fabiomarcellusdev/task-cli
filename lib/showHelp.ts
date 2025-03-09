@@ -7,11 +7,10 @@ import { HelpCommandType } from "./helpers";
 export const showHelp = (cmd?: HelpCommandType): void => {
     const helpMessages = {
         add: "add <task description> - Adds a new task with the given description.",
-        update: "update <task ID> <status> - Updates the status of the task with the given ID.",
+        update: "update <task ID> <description> - Updates the description of the task with the given ID.",
         delete: "delete <task ID> - Deletes the task with the given ID.",
-        "mark-in-progress": "mark-in-progress <task ID> - Marks the task with the given ID as in-progress.",
-        "mark-done": "mark-done <task ID> - Marks the task with the given ID as done.",
-        list: "list [filter] - Lists all tasks, optionally filtered by status.",
+        mark: "mark <task ID> <status> - Updates task to have new status.",
+        list: "list <status or all> - Lists all tasks, optionally filtered by status.",
     };
 
     if (cmd && helpMessages[cmd]) {
@@ -24,16 +23,14 @@ export const showHelp = (cmd?: HelpCommandType): void => {
               ${helpMessages.add}
               ${helpMessages.update}
               ${helpMessages.delete}
-              ${helpMessages["mark-in-progress"]}
-              ${helpMessages["mark-done"]}
+              ${helpMessages.mark}
               ${helpMessages.list}
             
             Examples:
-              task-cli add "Buy groceries" --priority high
-              task-cli update 12345 done
+              task-cli add "Buy groceries"
+              task-cli update 12345 "Buy milk"
               task-cli delete 12345
-              task-cli mark-in-progress 12345
-              task-cli mark-done 12345
+              task-cli mark 12345 in-progress
               task-cli list in-progress
               task-cli help add
                     `);

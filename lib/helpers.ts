@@ -5,7 +5,7 @@ import { customAlphabet } from "nanoid";
 
 export const TASKS_FILE = path.join(__dirname, "..", "tasks.json");
 
-export type HelpCommandType = "add" | "update" | "delete" | "mark-in-progress" | "mark-done" | "list";
+export type HelpCommandType = "add" | "update" | "delete" | "mark" | "list";
 
 export const isHelpCommandType = (value: any): value is HelpCommandType => {
     return ["add", "update", "delete", "mark-in-progress", "mark-done", "list"].includes(value);
