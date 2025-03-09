@@ -1,17 +1,10 @@
+import type { Task } from "../types/task";
 const fs = require("fs");
 const path = require("path");
 
 export const TASKS_FILE = path.join(__dirname, "..", "tasks.json");
 
 export type HelpCommandType = "add" | "update" | "delete" | "mark-in-progress" | "mark-done" | "list";
-
-export interface Task {
-    id: string;
-    description: string;
-    status: "open" | "in-progress" | "done";
-    createdAt: Date;
-    updatedAt: Date;
-}
 
 export const isHelpCommandType = (value: any): value is HelpCommandType => {
     return ["add", "update", "delete", "mark-in-progress", "mark-done", "list"].includes(value);
@@ -70,7 +63,7 @@ export const showHelp = (cmd?: HelpCommandType): void => {
  * Load tasks data from TASKS_FILE file
  * @returns Array of task objects
  */
-const loadTasks = (): Task[] => {
+export const loadTasks = (): Task[] => {
     const taskData = fs.readFileSync(TASKS_FILE, "utf8");
     return JSON.parse(taskData);
 }
@@ -79,7 +72,7 @@ const loadTasks = (): Task[] => {
  * Saves tasks data to TASKS_FILE file
  * @param tasks Array of task objects
  */
-const saveTasks = (tasks: Task[]) => {
+export const saveTasks = (tasks: Task[]) => {
     fs.writeFileSync(TASKS_FILE, JSON.stringify(tasks), "utf8");
 };
 
@@ -87,6 +80,6 @@ const saveTasks = (tasks: Task[]) => {
  * 
  * @returns Unique task ID based on current Date
  */
-const generateTaskId = () => {
+export const generateTaskId = () => {
     return Date.now().toString();
 }
