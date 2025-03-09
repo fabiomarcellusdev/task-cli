@@ -3,10 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc",
+    "start": "node dist/bin/task-cli.js"
   },
   "bin": {
-    "task-cli": "./task-cli.js"
+    "task-cli": "./dist/bin/task-cli.js"
   },
   "keywords": [],
   "author": "Fabio Marcellus",
