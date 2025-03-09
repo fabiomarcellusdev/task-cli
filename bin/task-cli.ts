@@ -3,6 +3,7 @@
 import addNewTask from "../lib/addNewTask";
 import deleteTask from "../lib/deleteTask";
 import { isHelpCommandType, showHelp, ensureTasksFileExists } from "../lib/helpers";
+import markTask, { isTaskStatusType } from "../lib/markTask";
 import updateTask from "../lib/updateTask";
 
 ensureTasksFileExists();
@@ -20,11 +21,10 @@ switch(command) {
     case "delete":
         deleteTask(args[1]);
         break;
-    case "mark-in-progress":
-        markInProgress(args[1], "in-progress");
-        break;
-    case "mark-done":
-        markDone(args[1], "done");
+    case "mark":
+        if(isTaskStatusType(args[2])) {
+            markTask(args[1], args[2]);
+        }
         break;
     case "list":
         listTasks(args[1] ?? "");
