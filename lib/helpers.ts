@@ -1,6 +1,7 @@
 import type { Task } from "../types/task";
 const fs = require("fs");
 const path = require("path");
+import { customAlphabet } from "nanoid";
 
 export const TASKS_FILE = path.join(__dirname, "..", "tasks.json");
 
@@ -40,10 +41,11 @@ export const saveTasks = (tasks: Task[]) => {
     fs.writeFileSync(TASKS_FILE, JSON.stringify(tasks), "utf8");
 };
 
+const nanoid = customAlphabet('1234567890abcdef', 5);
 /**
  * 
  * @returns Unique task ID based on current Date
  */
 export const generateTaskId = () => {
-    return Date.now().toString();
+    return nanoid();
 }
