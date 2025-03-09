@@ -43,5 +43,7 @@ switch (command) {
         }
         break;
     default:
+        console.log("\n");
         console.log("Invalid command. Please use one of the following commands: help, add, update, delete, mark-in-progress, mark-done, list");
+        console.log("\n");
 }
