@@ -2,8 +2,10 @@
 
 import addNewTask from "../lib/addNewTask";
 import deleteTask from "../lib/deleteTask";
-import { isHelpCommandType, showHelp, ensureTasksFileExists } from "../lib/helpers";
-import markTask, { isTaskStatusType } from "../lib/markTask";
+import { isHelpCommandType, ensureTasksFileExists, isTaskStatusType } from "../lib/helpers";
+import listTasks from "../lib/listTasks";
+import markTask from "../lib/markTask";
+import showHelp from "../lib/showHelp";
 import updateTask from "../lib/updateTask";
 
 ensureTasksFileExists();
@@ -27,7 +29,9 @@ switch(command) {
         }
         break;
     case "list":
-        listTasks(args[1] ?? "");
+        if(isTaskStatusType(args[1]) || args[1] === "all") {
+            listTasks(args[1]);
+        }
         break;
     case "help":
         if(isHelpCommandType(args[1])) {
