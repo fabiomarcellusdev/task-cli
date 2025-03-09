@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import addNewTask from "../lib/addNewTask";
+import deleteTask from "../lib/deleteTask";
 import { isHelpCommandType, showHelp, ensureTasksFileExists } from "../lib/helpers";
 import updateTask from "../lib/updateTask";
 
