@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+import addNewTask from "../lib/addNewTask";
 import { isHelpCommandType, showHelp, ensureTasksFileExists } from "../lib/helpers";
 
 ensureTasksFileExists();
@@ -9,7 +10,7 @@ const command = args[0];
 
 switch(command) {
     case "add":
-        addTask(args[1]);
+        addNewTask(args[1]);
         break;
     case "update":
         updateTask(args[1], args[2]);
