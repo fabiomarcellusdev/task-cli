@@ -14,6 +14,11 @@ const updateTask = (taskId: string, newDescription: string) => {
         return;
     }
 
+    if(tasks[taskIndex].description === newDescription) {
+        console.log("Error: New description is the same as the current description.");
+        return;
+    }
+    
     tasks[taskIndex].description = newDescription;
     tasks[taskIndex].updatedAt = new Date().toISOString();
     saveTasks(tasks);
