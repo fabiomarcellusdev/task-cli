@@ -1,13 +1,13 @@
 import { loadTasks, saveTasks } from "./helpers";
 
-const updateTask = (id: string, newDescription: string) => {
-    if (!id || !newDescription) {
+const updateTask = (taskId: string, newDescription: string) => {
+    if (!taskId || !newDescription) {
         console.log("Error: Task ID and new description are required.");
         return;
     }
 
     const tasks = loadTasks();
-    const taskIndex = tasks.findIndex(task => task.id === id);
+    const taskIndex = tasks.findIndex(task => task.id === taskId);
 
     if (taskIndex === -1) {
         console.log("Error: Task not found.");
@@ -17,6 +17,8 @@ const updateTask = (id: string, newDescription: string) => {
     tasks[taskIndex].description = newDescription;
     tasks[taskIndex].updatedAt = new Date().toISOString();
     saveTasks(tasks);
-    
-    console.log(`Task updated successfully. Task ID: ${id}`);
+
+    console.log(`Task updated successfully. Task ID: ${taskId}`);
 }
+
+export default updateTask;

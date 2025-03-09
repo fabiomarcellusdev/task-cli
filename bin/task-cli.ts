@@ -2,6 +2,7 @@
 
 import addNewTask from "../lib/addNewTask";
 import { isHelpCommandType, showHelp, ensureTasksFileExists } from "../lib/helpers";
+import updateTask from "../lib/updateTask";
 
 ensureTasksFileExists();
 
