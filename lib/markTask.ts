@@ -1,10 +1,6 @@
 import { Task } from "../types/task";
 import { loadTasks, saveTasks } from "./helpers";
 
-export const isTaskStatusType = (value: any): value is Task['status'] => {
-    return ["in-progress", "done", "open"].includes(value);
-};
-
 const markTask = (taskId: string, status: Task['status']): void => {
     if(!taskId || !status) {
         console.log("Error: Task ID and status are required.");
@@ -23,7 +19,7 @@ const markTask = (taskId: string, status: Task['status']): void => {
         console.log(`Error: Task is already marked as ${status}.`);
         return;
     }
-    
+
     tasks[taskIndex].status = status;
     tasks[taskIndex].updatedAt = new Date().toISOString();
 
