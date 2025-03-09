@@ -3,7 +3,7 @@ const path = require("path");
 
 export const TASKS_FILE = path.join(__dirname, "..", "tasks.json");
 
-export type HelpCommandType = "add" | "update" | "delete" | "mark-in-progress" | "mark-done" | "list" | "help";
+export type HelpCommandType = "add" | "update" | "delete" | "mark-in-progress" | "mark-done" | "list";
 
 export interface Task {
     id: string;
@@ -14,7 +14,7 @@ export interface Task {
 }
 
 export const isHelpCommandType = (value: any): value is HelpCommandType => {
-    return ["add", "update", "delete", "mark-in-progress", "mark-done", "list", "help"].includes(value);
+    return ["add", "update", "delete", "mark-in-progress", "mark-done", "list"].includes(value);
 };
 
 export function ensureTasksFileExists() {
@@ -31,16 +31,31 @@ export const showHelp = (cmd?: HelpCommandType) => {
         "mark-in-progress": "mark-in-progress <task ID> - Marks the task with the given ID as in-progress.",
         "mark-done": "mark-done <task ID> - Marks the task with the given ID as done.",
         list: "list [filter] - Lists all tasks, optionally filtered by status.",
-        help: "help [command] - Shows help information for the specified command."
     };
 
     if (cmd && helpMessages[cmd]) {
         console.log(helpMessages[cmd]);
     } else {
-        console.log("Available commands:");
-        for (const key in helpMessages) {
-            console.log(helpMessages[key as HelpCommandType]);
-        }
+        console.log(`
+            Usage: task-cli <command> [options]
+            
+            Commands:
+              ${helpMessages.add}
+              ${helpMessages.update}
+              ${helpMessages.delete}
+              ${helpMessages["mark-in-progress"]}
+              ${helpMessages["mark-done"]}
+              ${helpMessages.list}
+            
+            Examples:
+              task-cli add "Buy groceries" --priority high
+              task-cli update 12345 done
+              task-cli delete 12345
+              task-cli mark-in-progress 12345
+              task-cli mark-done 12345
+              task-cli list in-progress
+              task-cli help add
+                    `);
     }
 };
 
