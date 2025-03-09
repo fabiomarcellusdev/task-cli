@@ -5,8 +5,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "bin": {
+    "task-cli": "./task-cli.js"
+  },
   "keywords": [],
-  "author": "",
+  "author": "Fabio Marcellus",
   "license": "ISC",
   "type": "commonjs",
   "description": "",
