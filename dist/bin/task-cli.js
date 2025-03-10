@@ -33,6 +33,9 @@ switch (command) {
         if ((0, helpers_1.isTaskStatusType)(args[1]) || args[1] === "all") {
             (0, listTasks_1.default)(args[1]);
         }
+        if (!args[1]) {
+            (0, listTasks_1.default)();
+        }
         break;
     case "help":
         if ((0, helpers_1.isHelpCommandType)(args[1])) {
