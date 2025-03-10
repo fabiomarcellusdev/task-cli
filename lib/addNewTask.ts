@@ -25,7 +25,7 @@ const addNewTask = (description: Task['description']): void => {
 
     tasks.push(newTask);
     saveTasks(tasks);
-    console.log(`Task added successfully. Task ID: ${newTask.id}`);
+    console.log(`Task "${newTask.description}" added successfully. Task ID: ${newTask.id}`);
 }
 
 export default addNewTask;
