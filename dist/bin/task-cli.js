@@ -28,6 +28,7 @@ switch (command) {
         if ((0, helpers_1.isTaskStatusType)(args[2])) {
             (0, markTask_1.default)(args[1], args[2]);
         }
+        console.log("\nMissing status. Please use one of the following after the taskId: open, in-progress, done\n");
         break;
     case "list":
         if ((0, helpers_1.isTaskStatusType)(args[1]) || args[1] === "all") {
