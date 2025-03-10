@@ -27,10 +27,14 @@ switch(command) {
         if(isTaskStatusType(args[2])) {
             markTask(args[1], args[2]);
         }
+        console.log("\nMissing status. Please use one of the following after the taskId: open, in-progress, done\n");
         break;
     case "list":
         if(isTaskStatusType(args[1]) || args[1] === "all") {
             listTasks(args[1]);
+        }
+        if(!args[1]) {
+            listTasks();
         }
         break;
     case "help":
