@@ -1,13 +1,13 @@
 import { Task } from "../types/task";
 import { loadTasks, saveTasks } from "./helpers";
 
-const markTask = (taskId: Task['id'], status: Task['status']): void => {
+const markTask = async (taskId: Task['id'], status: Task['status'], fileName: string): Promise<void> => {
     if(!taskId || !status) {
         console.log("Error: Task ID and status are required.");
         return;
     }
 
-    const tasks = loadTasks();
+    const tasks = await loadTasks(fileName);
     const taskIndex = tasks.findIndex(task => task.id === taskId);
 
     if(taskIndex === -1) {
@@ -23,7 +23,7 @@ const markTask = (taskId: Task['id'], status: Task['status']): void => {
     tasks[taskIndex].status = status;
     tasks[taskIndex].updatedAt = new Date().toISOString();
 
-    saveTasks(tasks);
+    await saveTasks(tasks, fileName);
     console.log(`Task marked as ${status}. Task ID: ${taskId}`);
 }
 

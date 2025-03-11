@@ -6,13 +6,13 @@ import { Task } from "../types/task";
  * @param description Task description
  * @returns 
  */
-const addNewTask = (description: Task['description']): void => {
+const addNewTask = async (description: Task['description'], fileName: string): Promise<void> => {
     if(!description) {
         console.log("Error: Task description is required.");
         return;
     }
 
-    const tasks = loadTasks();
+    const tasks = await loadTasks(fileName);
 
     const newDate = new Date().toISOString();
     const newTask: Task = {
@@ -24,7 +24,7 @@ const addNewTask = (description: Task['description']): void => {
     }
 
     tasks.push(newTask);
-    saveTasks(tasks);
+    await saveTasks(tasks, fileName);
     console.log(`Task "${newTask.description}" added successfully. Task ID: ${newTask.id}`);
 }
 

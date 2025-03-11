@@ -5,8 +5,8 @@ import { loadTasks } from "./helpers";
  * Lists all tasks or tasks with a specific status
  * @param filter Task status to filter by
 */
-const listTasks = (filter: Task['status'] | "all" = "all") => {
-    const tasks = loadTasks();
+const listTasks = async (filter: Task['status'] | "all" = "all", fileName: string): Promise<void> => {
+    const tasks = await loadTasks(fileName);
 
     if(tasks.length === 0) {
         console.log("No tasks found.");
@@ -29,7 +29,7 @@ const listTasks = (filter: Task['status'] | "all" = "all") => {
     }
 
     if(filteredTasks.length === 0) {
-        console.log(`No ${filter} tasks found.`);
+        console.log(`No tasks found using ${filter} filter.`);
         return;
     }
 
@@ -37,7 +37,7 @@ const listTasks = (filter: Task['status'] | "all" = "all") => {
     filteredTasks.forEach(task => { 
         console.log(`[${task.status.toUpperCase()}] ${task.id} - ${task.description}`);
     });
-    console.log("");
+    console.log("\n");
 }
 
 export default listTasks;
