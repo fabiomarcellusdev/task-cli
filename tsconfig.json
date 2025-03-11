@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "allowJs": true,
     "outDir": "./dist",
     "rootDir": "./",
     /* Visit https://aka.ms/tsconfig to read more about this file */
@@ -115,6 +116,7 @@
   },
   "include": [
     "bin/task-cli.ts",
-    "lib/**/*.ts"
+    "lib/**/*.ts",
+    "__tests__/**/*.ts"
   ]
 }
